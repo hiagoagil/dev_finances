@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker'
 describe('template spec', () => {
   beforeEach(() => {
     cy.visit('/')
@@ -48,6 +49,15 @@ describe('template spec', () => {
         expect(textoLimpo).to.contain(total)
       })
   })
+  it.only('Removendo entradas e saídas', () => {
+    const ItemEntrada = faker.commerce.productAdjective()
+    cy.get('#transaction .button').click()
+    cy.get('#description').type(ItemEntrada)
+    cy.get('#amount').type('100')
+    cy.get('#date').type('2022-12-12')
+    cy.get('button').click()
+  });
+
 
 
 })
